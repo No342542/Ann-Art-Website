@@ -74,57 +74,100 @@
     return ART.filter(function (a) { return a.category === cat; });   // legacy fallback
   }
 
-  /* ---- grid ---- */
+  /* ---- grid ----
+     Cards are built ONCE per artwork and cached by id, so switching tabs reuses
+     the same DOM nodes — no image re-decode, no flicker, instant repositioning.
+     Images are lazy-loaded (the first EAGER per tab load immediately at high
+     priority — they're the likely above-the-fold row). When an artwork carries
+     its pixel size (a.w / a.h, stamped by the Manage tool on upload), the img
+     gets a CSS aspect-ratio so the card's height — and its masonry span — is
+     known BEFORE the image loads: zero layout shift. Legacy entries without
+     w/h fall back to sizing on the load event, exactly as before. */
   var grid = document.getElementById('grid');
+  var EAGER = 8;
+  var cardCache = {};                                    // artwork id → card element
 
-  function buildCard(a) {
-    var card = document.createElement('a');
+  function cardFor(a, i) {
+    var card = cardCache[a.id];
+    if (card) return card;
+    card = document.createElement('a');
     card.className = 'card';
     card.href = 'artwork.html?id=' + encodeURIComponent(a.id);
     card.setAttribute('data-category', a.category || '');
     card.innerHTML =
-      '<img class="card__img" src="' + a.image + '" alt="' + escapeAttr(a.title) + '">' +
+      '<img class="card__img" src="' + a.image + '" alt="' + escapeAttr(a.title) + '" decoding="async"' +
+        (i < EAGER ? ' fetchpriority="high"' : ' loading="lazy"') + '>' +
       '<span class="card__overlay">' + FACETS +
         '<span class="card__title">' + escapeHtml(a.title) + '</span>' + ARROW +
       '</span>';
     var img = card.querySelector('.card__img');
-    img.addEventListener('load', relayout);
-    img.addEventListener('error', relayout);
-    if (img.complete) relayout();                        // already cached — lay out now too
+    if (a.w > 0 && a.h > 0) img.style.aspectRatio = a.w + ' / ' + a.h;
+    function ready() {
+      // Real pixels beat stored metadata; also upgrades legacy entries so later
+      // relayouts (resize, tab switch) never depend on the image being decoded.
+      if (img.naturalWidth && img.naturalHeight) {
+        img.style.aspectRatio = img.naturalWidth + ' / ' + img.naturalHeight;
+      }
+      img.classList.add('is-loaded');
+      spanCard(card);
+    }
+    img.addEventListener('load', ready);
+    img.addEventListener('error', function () { img.classList.add('is-loaded'); spanCard(card); });
+    if (img.complete && img.naturalWidth) ready();       // already cached
+    cardCache[a.id] = card;
     return card;
   }
 
   function render(cat) {
-    grid.innerHTML = '';
-    listFor(cat).forEach(function (a) { grid.appendChild(buildCard(a)); });
-    relayout();
+    var frag = document.createDocumentFragment();
+    listFor(cat).forEach(function (a, i) { frag.appendChild(cardFor(a, i)); });
+    grid.textContent = '';                               // detach old set (nodes live on in cardCache)
+    grid.appendChild(frag);                              // one insertion = one layout pass
+    _doLayout();                                         // span NOW — heights are known via aspect-ratio,
+    relayout();                                          // …then a scheduled pass mops up any stragglers
   }
 
   /* ---- row-major masonry: set each card's grid-row span from its height ----
-     Debounced (cancel+reschedule) rather than swallowed, and re-runs while any
-     card still has no height. Without this, switching to a subtab whose images
-     are already CACHED fires all their load events in one burst that the old
-     throttle swallowed → the single pass measured height 0 → no spans → the grid
-     collapsed into columns. Now every tab lays out row-major. */
+     spanCard sizes ONE card (used per-image as each lazy load lands, so the
+     grid settles progressively without a full-pass). relayout re-spans every
+     card: debounced (cancel+reschedule) rather than swallowed, and it re-runs
+     while any card still has no height. Without that, switching to a subtab
+     whose images are already CACHED fires all their load events in one burst
+     that a naive throttle swallows → height 0 → no spans → the grid collapses
+     into columns. Cards with a known aspect-ratio have a height immediately,
+     so they span correctly on the very first pass. */
+  function gridMetrics() {
+    var cs = getComputedStyle(grid);
+    if (cs.display !== 'grid') return null;              // CSS not in masonry mode
+    return { rowUnit: parseFloat(cs.gridAutoRows) || 8, gap: parseFloat(cs.columnGap) || 20 };
+  }
+  function spanCard(card, m) {
+    m = m || gridMetrics();
+    if (!m) return;
+    var h = card.getBoundingClientRect().height;
+    if (h) card.style.gridRowEnd = 'span ' + Math.max(1, Math.ceil((h + m.gap) / m.rowUnit));
+  }
   var _raf = 0, _tries = 0;
   function relayout() { _tries = 0; _schedule(); }       // external trigger: reset the retry budget
   function _schedule() { if (_raf) cancelAnimationFrame(_raf); _raf = requestAnimationFrame(_doLayout); }
   function _doLayout() {
     _raf = 0;
-    var cs = getComputedStyle(grid);
-    if (cs.display !== 'grid') return;                    // CSS not in masonry mode
-    var rowUnit = parseFloat(cs.gridAutoRows) || 8;
-    var gap = parseFloat(cs.columnGap) || 20;
+    var m = gridMetrics();
+    if (!m) return;
     var cards = grid.querySelectorAll('.card'), pending = 0;
     for (var i = 0; i < cards.length; i++) {
       var h = cards[i].getBoundingClientRect().height;
       if (!h) { pending++; continue; }                   // image not laid out yet
-      cards[i].style.gridRowEnd = 'span ' + Math.max(1, Math.ceil((h + gap) / rowUnit));
+      cards[i].style.gridRowEnd = 'span ' + Math.max(1, Math.ceil((h + m.gap) / m.rowUnit));
     }
     if (pending && _tries++ < 40) _schedule();           // still settling — try again next frame (bounded)
   }
   window.addEventListener('resize', relayout);
   window.addEventListener('load', relayout);
+  window.addEventListener('pageshow', relayout);         // bfcache restore (iOS back-swipe)
+  document.addEventListener('visibilitychange', function () {
+    if (!document.hidden) relayout();                    // background tab → sizes were 0 while hidden
+  });
 
   /* ---- filtering ---- */
   function apply(cat) {

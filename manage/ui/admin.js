@@ -319,13 +319,13 @@
     if (currentTab !== 'All') switchTab('All');     // new uploads belong to the master list
     imgs.forEach(function(f){
       var art = { id:'', title:f.name.replace(/\.[^.]+$/,''), date:String(new Date().getFullYear()),
-        category:'', image:'', text:'', video:null };
+        category:'', image:'', text:'', video:null, w:null, h:null };
       ALL_ARTS.push(art);
       var card = buildCard(art); card.classList.add('card--uploading'); grid.appendChild(card); updateEmpty();
       setStatus('Uploading…','saving');
       fileToBase64(f).then(function(b64){ return api('/api/upload',{kind:'image',filename:f.name,dataBase64:b64}); })
         .then(function(res){
-          art.image = res.path; art.id = res.id;
+          art.image = res.path; art.id = res.id; art.w = res.w || null; art.h = res.h || null;
           card.querySelector('.card__media img').src = '/' + res.path;
           card.classList.remove('card--uploading'); renderTabs(); saveNow();
         })
@@ -467,7 +467,7 @@
   function siteForSave(){ SITE.collections = COLLECTIONS; return SITE; }
   function cleanArts(){
     return ALL_ARTS.map(function(a){ return { id:a.id, title:a.title||'', date:a.date||'', category:a.category||'',
-        image:a.image, text:a.text||'', video:a.video||null }; })
+        image:a.image, text:a.text||'', video:a.video||null, w:a.w||null, h:a.h||null }; })
       .filter(function(a){ return a.image; });
   }
   function saveNow(){

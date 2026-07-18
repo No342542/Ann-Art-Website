@@ -153,8 +153,10 @@ button{ font:inherit; color:inherit; background:none; border:0; cursor:pointer; 
 }
 .card__img{
   width:100%; height:auto; display:block;
-  transition:transform .65s var(--ease), filter .45s var(--ease);
+  opacity:0;                   /* fades in when loaded (.is-loaded, gallery.js) */
+  transition:transform .65s var(--ease), filter .45s var(--ease), opacity .35s ease;
 }
+.card__img.is-loaded{ opacity:1; }
 .card__overlay{
   position:absolute; inset:0; opacity:0;
   transition:opacity .4s var(--ease);

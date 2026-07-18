@@ -129,10 +129,50 @@ def now_iso():
     return datetime.now(timezone.utc).isoformat()
 
 
+MAX_EDGE = 2560   # web perf cap: uploads are downscaled so the long edge is ≤ this
+
+
+def image_dims(abspath):
+    """Pixel size via macOS `sips`. Best-effort: (w, h) or (None, None)."""
+    try:
+        r = subprocess.run(["sips", "-g", "pixelWidth", "-g", "pixelHeight", abspath],
+                           capture_output=True, text=True, timeout=60)
+        w = h = None
+        for line in r.stdout.splitlines():
+            parts = line.strip().split(":")
+            if parts[0] == "pixelWidth" and len(parts) > 1:
+                w = int(parts[1])
+            elif parts[0] == "pixelHeight" and len(parts) > 1:
+                h = int(parts[1])
+        return (w, h) if (w and h) else (None, None)
+    except Exception:
+        return None, None
+
+
+def cap_image_size(abspath):
+    """Downscale a saved image in place so its long edge is ≤ MAX_EDGE px, so a
+    full-resolution scan/photo doesn't ship multi-MB files to the live site.
+    SVG/GIF are left alone (vector / animation). Best-effort: any failure keeps
+    the original file. Returns the final (w, h) — or (None, None) if unknown."""
+    ext = os.path.splitext(abspath)[1].lower()
+    if ext in (".svg", ".gif"):
+        return image_dims(abspath)
+    w, h = image_dims(abspath)
+    if w and h and max(w, h) > MAX_EDGE:
+        try:
+            r = subprocess.run(["sips", "--resampleHeightWidthMax", str(MAX_EDGE), abspath],
+                               capture_output=True, text=True, timeout=180)
+            if r.returncode == 0:
+                w, h = image_dims(abspath)
+        except Exception:
+            pass
+    return w, h
+
+
 def save_image(blob, fname, folder, url_prefix):
     """Save an uploaded image. Web formats are kept as-is; camera/scan formats
     (TIFF, HEIC, BMP) are converted to JPEG with macOS `sips` so they display on
-    the web. Returns (url_path, error)."""
+    the web. Oversized images are downscaled to MAX_EDGE. Returns (url_path, error)."""
     ext = os.path.splitext(fname)[1].lower()
     os.makedirs(folder, exist_ok=True)
     if ext in CONVERT_EXTS:
@@ -154,10 +194,12 @@ def save_image(blob, fname, folder, url_prefix):
             return None, "Couldn't convert this image (the Mac 'sips' tool wasn't found). Please export it as JPG or PNG."
         if r.returncode != 0 or not os.path.isfile(out):
             return None, "Couldn't convert this image. Please export it as JPG or PNG and try again."
+        cap_image_size(out)
         return url_prefix + out_name, None
     fname = unique_path(folder, fname)
     with open(os.path.join(folder, fname), "wb") as f:
         f.write(blob)
+    cap_image_size(os.path.join(folder, fname))
     return url_prefix + fname, None
 
 
@@ -324,7 +366,9 @@ class Handler(BaseHTTPRequestHandler):
         path, err = save_image(blob, fname, ART_DIR, "assets/img/artwork/")
         if err:
             return self._json(400, {"error": err})
-        return self._json(200, {"path": path, "id": os.path.splitext(os.path.basename(path))[0]})
+        w, h = image_dims(os.path.join(SITE_DIR, path))   # lets the site lay out before the image loads
+        return self._json(200, {"path": path, "id": os.path.splitext(os.path.basename(path))[0],
+                                "w": w, "h": h})
 
     def _move_to_trash(self, rel):
         rel = (rel or "").lstrip("/")

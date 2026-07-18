@@ -27,7 +27,7 @@
   if (split) root.classList.add('detail--split');
 
   var back = '<a class="detail__back" href="index.html">' + backArrow() + ' Back to gallery</a>';
-  var image = '<div class="detail__media"><img class="detail__img" src="' + attr(a.image) + '" alt="' + attr(a.title) + '"></div>';
+  var image = '<div class="detail__media"><img class="detail__img" src="' + attr(a.image) + '" alt="' + attr(a.title) + '" decoding="async" fetchpriority="high"></div>';
   var vid = hasVideo ? player(a) : '';
   var title = '<h1 class="detail__title">' + esc(a.title) + '</h1>';
   var date = '<div class="detail__date">' + esc(a.date || '') +
