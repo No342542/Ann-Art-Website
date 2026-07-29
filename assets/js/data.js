@@ -5,7 +5,7 @@
 window.SITE = {
   "name": "Ann",
   "galleryTitle": "Gallery",
-  "instagram": "https://instagram.com/REPLACE_ME",
+  "instagram": "https://www.instagram.com/lil_annw?utm_source=qr",
   "about": "Ann is an artist working in zentangle, pencil, color pencil and Procreate. This is placeholder text — replace it with Ann's own words.",
   "categories": [
     "All",

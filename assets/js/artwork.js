@@ -1,9 +1,7 @@
-/* Detail page: renders one artwork from ?id=.
-   Layout is driven by SITE.detailLayout:
-     - "split"  → image (and speed-paint) on the left, words on the right (Josie)
-     - default  → image centered, words centered below (Ann)
-   Josie's speed-paints loop until Stop; the player shows Play / Stop only,
-   never a progress bar or scrubber. */
+/* Detail page (Ann): renders one artwork from ?id=.
+   Layout: a single meta line on top — TITLE · date · notes — in the small
+   letterspaced style of the reference site, then the one artwork LARGE
+   below it (it fills most of the screen for detailed viewing). */
 (function () {
   var S = window.SITE || {};
   var ART = window.ARTWORKS || [];
@@ -22,68 +20,22 @@
 
   var prev = ART[(idx - 1 + ART.length) % ART.length];
   var next = ART[(idx + 1) % ART.length];
-  var hasVideo = S.hasVideo && a.video;
-  var split = (S.detailLayout === 'split');
-  if (split) root.classList.add('detail--split');
 
   var back = '<a class="detail__back" href="index.html">' + backArrow() + ' Back to gallery</a>';
-  var image = '<div class="detail__media"><img class="detail__img" src="' + attr(a.image) + '" alt="' + attr(a.title) + '" decoding="async" fetchpriority="high"></div>';
-  var vid = hasVideo ? player(a) : '';
-  var title = '<h1 class="detail__title">' + esc(a.title) + '</h1>';
-  var date = '<div class="detail__date">' + esc(a.date || '') +
-    (a.category ? '&nbsp;&middot;&nbsp;' + esc(a.category) : '') + '</div>';
-  var text = a.text ? '<p class="detail__text">' + esc(a.text) + '</p>' : '';
+  var sep = '<span class="detail__sep" aria-hidden="true">&middot;</span>';
+  var meta = '<div class="detail__meta">' +
+      '<h1 class="detail__title">' + esc(a.title) + '</h1>' +
+      (a.date ? sep + '<span class="detail__date">' + esc(a.date) + '</span>' : '') +
+      (a.text ? sep + '<p class="detail__text">' + esc(a.text) + '</p>' : '') +
+    '</div>';
+  var image = '<div class="detail__media"><img class="detail__img" src="' + attr(a.image) + '" alt="' + attr(a.title) + '" decoding="async" fetchpriority="high"' +
+    (a.w > 0 && a.h > 0 ? ' style="aspect-ratio:' + a.w + ' / ' + a.h + '"' : '') + '></div>';
   var nav = '<div class="detail__nav">' +
       '<a href="artwork.html?id=' + encodeURIComponent(prev.id) + '">' + backArrow() + ' Prev</a>' +
       '<a href="artwork.html?id=' + encodeURIComponent(next.id) + '">Next ' + fwdArrow() + '</a>' +
     '</div>';
 
-  if (split) {
-    root.innerHTML = back +
-      '<div class="detail__cols">' +
-        '<div class="detail__media-col">' + image + vid + '</div>' +
-        '<div class="detail__info-col">' + title + date + text + '</div>' +
-      '</div>' + nav;
-  } else {
-    root.innerHTML = back + image +
-      '<div class="detail__meta">' + title + date + '</div>' + vid + text + nav;
-  }
-
-  if (hasVideo) wirePlayer();
-
-  /* ---------- minimal looping player ---------- */
-  function player(a) {
-    return '<div class="player" id="player">' +
-      '<video class="player__video" id="paint" playsinline loop preload="metadata" ' +
-        'poster="' + attr(a.image) + '"><source src="' + attr(a.video) + '" type="video/mp4"></video>' +
-      '<button class="player__btn player__play" id="playBtn" aria-label="Play speed-paint">' +
-        '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5v14l12-7z"/></svg></button>' +
-      '<button class="player__btn player__stop" id="stopBtn" aria-label="Stop">' +
-        '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="1"/></svg></button>' +
-      '</div>';
-  }
-
-  function wirePlayer() {
-    var wrap = document.getElementById('player');
-    var video = document.getElementById('paint');
-    var playBtn = document.getElementById('playBtn');
-    var stopBtn = document.getElementById('stopBtn');
-
-    function showPlay() { wrap.classList.remove('is-playing'); playBtn.hidden = false; }
-    function hidePlay() { wrap.classList.add('is-playing'); playBtn.hidden = true; }
-
-    playBtn.addEventListener('click', function () { video.play(); });
-    stopBtn.addEventListener('click', function () { video.pause(); video.currentTime = 0; });
-    video.addEventListener('play', hidePlay);
-    video.addEventListener('pause', showPlay);   // fires when Stop pauses (loop never "ends")
-    video.addEventListener('error', function () {
-      playBtn.hidden = true;
-      var note = document.createElement('div');
-      note.className = 'player__note';
-      note.textContent = 'Speed-paint coming soon';
-      wrap.appendChild(note);
-    });
-  }
+  root.innerHTML = back + meta + image + nav;
 
   function esc(s) {
     return String(s).replace(/[&<>]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]; });
