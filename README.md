@@ -4,7 +4,8 @@ A simple, self-contained portfolio site. **No build step, no accounts.**
 
 ## Manage the gallery — the easy way
 
-In the main **Art Gallery Website** folder, **double-click `Manage Ann.command`**.
+In this folder, **double-click `Manage Ann.command`** (on Ann's Mac see
+**`SETUP — Ann's Mac.md`** for the one-time install).
 A small Terminal window opens and your browser shows a visual manager — your
 photos as cards. No coding, everything saves automatically:
 
@@ -25,9 +26,11 @@ photos as cards. No coding, everything saves automatically:
 developer — **right-click it → Open → Open**. It needs **Python 3** (already on
 most Macs; if missing, macOS will offer to install it the first time).
 
-## Replace the logo photo
-Swap `assets/img/logo/ann-icon.png` with your own square-ish photo (same
-filename). The circle crop + the hand-written “ANN” are added automatically.
+## Replace the signature logo
+The hand-drawn "aNN wong" signature at the top of every page is
+`assets/img/logo/ann-signature.jpg`. To change it, swap that file (same
+filename) with a new image on a white background — white blends straight into
+the page. (`assets/img/logo/ann-icon.png` is only the browser-tab icon.)
 
 ## Where you work (no Tailscale, no shared computer)
 Run the Manage tool **on your own Mac**, on your own copy of this `Ann` folder.
