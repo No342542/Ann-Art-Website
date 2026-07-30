@@ -12,73 +12,46 @@ running on this setup since June.
 Nothing here can break the artwork: the files already live in git, and every
 step below is reversible.
 
----
+**The setup this assumes** (already true, nothing to change):
 
-## Part A — The repository (5 minutes)
+| | |
+|---|---|
+| GitHub account | **No342542** (northdeskai@gmail.com) — the same account that serves `josiewong.art` |
+| Repository | **`No342542/Ann-Art-Website`** — already created and fully pushed |
+| Push authentication | SSH alias `github-no342542` on Gordon's Mac; a deploy key on Ann's Mac |
 
-### A0. What already exists
-
-The site is **already on GitHub**, fully pushed, at
-`No342542/Ann-Art-Website`. Nothing needs re-uploading. So there are two
-sensible paths — pick one:
-
-| | What you do | Why |
-|---|---|---|
-| **Recommended** | **Rename** the existing repo to `annwongstudio.com` | Keeps all history and the deploy key; the name then matches the domain, so it's obvious a year from now which repo is the live site |
-| Alternative | Leave the name as `Ann-Art-Website` | Zero steps. Visitors never see the repo name |
-
-Creating a *brand-new empty* repo is the one option to avoid — it would mean
-re-pushing everything and re-adding Ann's deploy key for no gain.
-
-**On repo names in general:** the name is invisible to visitors once a custom
-domain is attached, so the only rule is "name it so you recognise it later."
-Matching the domain (`annwongstudio.com`) is the clearest choice. The one name
-with special behaviour is `<username>.github.io`, which serves at the account
-root — not needed here.
-
-### A1. Rename it (the recommended path)
-
-1. github.com → **No342542/Ann-Art-Website** → **Settings** (top tab)
-2. The **Repository name** box is the first field: replace it with
-   **`annwongstudio.com`** → **Rename**
-
-GitHub automatically forwards the old address, so nothing breaks in the
-meantime. Tell Gordon afterwards and he'll run one command on each Mac that has
-a copy, so they point at the new name directly:
-
-```bash
-git remote set-url origin git@github-no342542:No342542/annwongstudio.com.git
-```
-
-*(On Ann's Mac the alias is `ann-site` instead of `github-no342542` — see
-`SETUP — Ann's Mac.md`.)*
+There is **nothing to do in this part** — no new repo, no rename. The repository
+name is invisible to visitors once the custom domain is attached, so
+`Ann-Art-Website` is a perfectly good permanent name. Skip straight to Part A.
 
 ---
 
-## Part B — Turn on GitHub Pages (5 minutes)
+## Part A — Turn on GitHub Pages (5 minutes)
 
-1. In the repo → **Settings** → **Pages** (left sidebar)
-2. **Source**: *Deploy from a branch* · **Branch**: `main` · **Folder**:
+1. Go to **github.com → No342542/Ann-Art-Website** (sign in as
+   northdeskai@gmail.com)
+2. **Settings** (the top tab) → **Pages** (left sidebar)
+3. **Source**: *Deploy from a branch* · **Branch**: `main` · **Folder**:
    `/ (root)` → **Save**
-3. Wait ~1 minute, then reload the page. It will show a link like
-   `https://no342542.github.io/annwongstudio.com/` — click it. **The gallery
+4. Wait ~1 minute, then reload the page. It will show a link like
+   `https://no342542.github.io/Ann-Art-Website/` — click it. **The gallery
    should appear.** (Some styling may look off at this temporary address; that's
-   normal and fixes itself once the domain is attached.)
-4. Still on the Pages screen: **Custom domain** → type **`annwongstudio.com`**
+   normal and corrects itself once the domain is attached in the next step.)
+5. Still on the Pages screen: **Custom domain** → type **`annwongstudio.com`**
    → **Save**.
-   GitHub now checks the DNS and will show a warning until Part C is done —
-   expected.
+   GitHub now checks the DNS and will show a warning until Part B is done —
+   expected, ignore it for now.
 
 > The repo already contains a file named **`CNAME`** holding
 > `annwongstudio.com`. That's how Pages remembers the custom domain, and it's
-> why the domain survives future publishes. Don't delete it.
+> why the domain survives every future publish. Don't delete it.
 
 ---
 
-## Part C — Point the domain at GitHub, in Squarespace (10 minutes + waiting)
+## Part B — Point the domain at GitHub, in Squarespace (10 minutes + waiting)
 
-Squarespace is the **registrar and the DNS host**, so all of this happens in
-Squarespace — nothing changes on the GitHub side.
+Squarespace is both the **registrar and the DNS host**, so all of this happens
+in Squarespace — nothing changes on the GitHub side.
 
 1. Log in at squarespace.com → **Domains** → click **annwongstudio.com**
 2. Open **DNS** → **DNS Settings** (older accounts call it *Advanced DNS*)
@@ -97,8 +70,9 @@ Squarespace — nothing changes on the GitHub side.
    | `@` | A | `185.199.111.153` |
    | `www` | CNAME | `no342542.github.io` |
 
-   These four IPs are GitHub Pages' published addresses (the same ones
-   `josiewong.art` resolves to today).
+   Those four IPs are GitHub Pages' published addresses (the same ones
+   `josiewong.art` resolves to today). The `www` value is the **No342542**
+   account's Pages host — note it is the account name, not the repo name.
 
    *Known quirk from Josie's setup:* Squarespace refused to save the fourth
    record (`185.199.111.153`). **Three A records is plenty** — don't fight it.
@@ -108,7 +82,7 @@ Squarespace — nothing changes on the GitHub side.
 6. Save. DNS changes take **15 minutes to a few hours** to spread (occasionally
    up to 24).
 
-### Part C checkpoint
+### Part B checkpoint
 
 Once it has propagated, this shows GitHub's IPs instead of Squarespace's:
 
@@ -121,7 +95,7 @@ Expect `185.199.108.153`, `185.199.109.153`, `185.199.110.153` (and possibly
 
 ---
 
-## Part D — Lock in HTTPS (2 minutes, after DNS has propagated)
+## Part C — Lock in HTTPS (2 minutes, after DNS has propagated)
 
 1. Repo → **Settings** → **Pages**. The custom-domain warning should be gone
    and it should say the site is live at `https://annwongstudio.com`.
@@ -142,8 +116,8 @@ confirm the little chick shows in the browser tab.
 ## Afterwards: how updates go live
 
 Ann opens **Manage Ann.command**, edits, presses **🌐 Publish** — that pushes to
-GitHub, and GitHub Pages rebuilds the public site in about a minute. Nothing in
-this guide has to be repeated.
+`No342542/Ann-Art-Website`, and GitHub Pages rebuilds the public site in about a
+minute. Nothing in this guide has to be repeated.
 
 > Note the trade-off this creates: from the moment Pages is on, **a Publish is a
 > live deploy**. That's the same arrangement Josie has.
@@ -153,14 +127,14 @@ this guide has to be repeated.
 ## If something looks wrong
 
 - **Still the "Coming Soon" page** → DNS hasn't propagated, or the old
-  Squarespace `A`/`www` records are still there. Re-check step C3, then run the
+  Squarespace `A`/`www` records are still there. Re-check step B3, then run the
   `dig` command above.
 - **GitHub says "domain does not resolve to the GitHub Pages server"** →
   normal until DNS propagates; recheck after an hour.
 - **Site loads but images/styles are missing** → make sure Pages is set to the
   **`main`** branch and the **`/ (root)`** folder, not `/docs`.
 - **`www.annwongstudio.com` doesn't work but the bare domain does** → the `www`
-  CNAME in step C4 is missing or still pointing at Squarespace.
+  CNAME in step B4 is missing or still pointing at Squarespace.
 - **Ann's email on this domain stops** → a TXT/MX record was removed in step
-  C3. Squarespace support can restore the mail records; the A/CNAME changes
+  B3. Squarespace support can restore the mail records; the A/CNAME changes
   above don't touch email.

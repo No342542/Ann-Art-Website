@@ -49,18 +49,15 @@ Your edits save to your own computer instantly. When you're ready for the public
 site to update, click **🌐 Publish** — it sends your changes to GitHub and your
 live website refreshes in about a minute.
 
-## One-time setup (a tech-comfortable person does this once per site)
-Connects the site to GitHub + your Squarespace domain:
-1. **GitHub repo** — create a repo for this site and push this `Ann` folder into it
-   (or `git clone` the empty repo and move the files in). The Publish button then
-   runs `git push` for you.
-2. **GitHub Pages** — repo → Settings → Pages → deploy from the `main` branch. You
-   get a free `https://<user>.github.io/<repo>/` URL.
-3. **Squarespace domain** — in Squarespace's DNS settings add the records GitHub
-   Pages lists (A records / a CNAME), then set the custom domain in repo → Pages.
-4. **Each artist's Mac** — put a `git clone` of the repo there, and sign in to GitHub
-   once so pushing works (easiest: install the GitHub CLI and run `gh auth login`).
-   After that, **Publish** just works — no terminal, no GitHub knowledge needed.
+## One-time setup (a tech-comfortable person does this once)
+Already done: the site lives in the GitHub repo **`No342542/Ann-Art-Website`**, and
+the Publish button pushes to it.
+
+Still to do, to put the site on its public address **annwongstudio.com** —
+turn on GitHub Pages, then re-point the domain in Squarespace. Full click-by-click
+steps are in **`PUBLISH — go live.md`** next to this file.
+
+To set the tool up on Ann's own Mac, see **`SETUP — Ann's Mac.md`**.
 
 This site is fully independent from Josie's — its own repo, its own domain.
 
