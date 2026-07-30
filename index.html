@@ -4,8 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Ann — Gallery</title>
-  <meta name="description" content="Artwork by Ann — zentangle, pencil, color pencil and Procreate.">
-  <link rel="icon" href="assets/img/logo/ann-icon.png">
+  <meta name="description" content="Artwork by Ann Wong — characters, portraits, nature &amp; places, and zentangles.">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
@@ -14,10 +17,6 @@
 <body data-page="gallery">
   <header id="sidebar" class="topbar"></header>
   <main class="main">
-    <div class="page-head">
-      <h1 class="page-title" id="pageTitle">Gallery</h1>
-      <hr class="page-rule">
-    </div>
     <nav class="filters" id="filters" aria-label="Categories"></nav>
     <div class="grid" id="grid"></div>
   </main>
@@ -33,7 +32,19 @@
       document.body.appendChild(s);
     }
     add('assets/js/data.js?v=' + Date.now(), function () {
-      add('assets/js/ui.js'); add('assets/js/gallery.js');
+      add('assets/js/ui.js');
+      /* The landing tab is "All" (gallery.js). A ?cat= link — how the nav row on
+         the About / artwork pages points back here — opens that gallery instead,
+         by clicking its filter button once gallery.js has built the bar. (Doing
+         it here keeps gallery.js byte-identical with Josie's copy.) */
+      add('assets/js/gallery.js', function () {
+        var want = new URLSearchParams(location.search).get('cat');
+        if (!want) return;
+        var btns = document.querySelectorAll('#filters .filter');
+        for (var i = 0; i < btns.length; i++) {
+          if (btns[i].textContent === want) { btns[i].click(); return; }
+        }
+      });
     });
   })();
   </script>

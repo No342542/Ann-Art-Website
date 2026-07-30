@@ -30,7 +30,13 @@ most Macs; if missing, macOS will offer to install it the first time).
 The hand-drawn "aNN wong" signature at the top of every page is
 `assets/img/logo/ann-signature.jpg`. To change it, swap that file (same
 filename) with a new image on a white background — white blends straight into
-the page. (`assets/img/logo/ann-icon.png` is only the browser-tab icon.)
+the page.
+
+## The little chick icon (browser tab + iPhone home screen)
+`favicon.ico`, `favicon-32.png`, `favicon-16.png`, `apple-touch-icon.png` and
+`apple-touch-icon-precomposed.png` in this folder are all generated from
+`assets/img/logo/chick-icon-source.png` — keep that file if you ever want to
+remake them. (The older `assets/img/logo/ann-icon.png` is no longer used.)
 
 ## Where you work (no Tailscale, no shared computer)
 Run the Manage tool **on your own Mac**, on your own copy of this `Ann` folder.

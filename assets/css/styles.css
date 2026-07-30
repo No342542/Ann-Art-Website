@@ -37,10 +37,10 @@ img{ max-width:100%; display:block; }
 a{ color:inherit; text-decoration:none; }
 button{ font:inherit; color:inherit; letter-spacing:inherit; background:none; border:0; cursor:pointer; }
 
-/* ---------- top header: centered signature + nav ---------- */
+/* ---------- top header: centered signature + ONE nav row ---------- */
 .topbar{
   text-align:center;
-  padding:40px 20px 6px;
+  padding:40px 20px 30px;
 }
 .sig{ display:inline-block; }
 .sig img{
@@ -49,23 +49,35 @@ button{ font:inherit; color:inherit; letter-spacing:inherit; background:none; bo
      background into the page so it never shows as a pasted-on square */
   mix-blend-mode:multiply;
 }
-.nav{
-  display:flex; flex-wrap:wrap; justify-content:center;
-  gap:2px 28px;
-  margin:18px auto 0;
-  max-width:860px;
+
+/* One row holds the categories, About and the Instagram icon. `display:contents`
+   on the two inner <nav>s lifts their links into this flex row, so everything
+   shares one set of gaps and wraps as a single list — while the .filters node
+   stays a real element for gallery.js to fill. */
+.navrow{
+  display:flex; flex-wrap:wrap; justify-content:center; align-items:baseline;
+  gap:4px 4px; margin:20px auto 0; max-width:1080px;
 }
+.navrow .filters,
+.navrow .nav{ display:contents; }
+
+.filter,
 .nav__link{
-  display:inline-flex; align-items:center; gap:8px;
-  font-size:14.5px; font-weight:400; letter-spacing:var(--track); text-transform:uppercase;
+  font-size:14px; font-weight:400; letter-spacing:var(--track); text-transform:uppercase;
   color:var(--soft);
-  padding:2px 1px;
+  padding:3px 10px;
   border-bottom:1px solid transparent;
   transition:color .25s var(--ease), border-color .25s var(--ease);
 }
+.filter:hover,
 .nav__link:hover{ color:var(--ink); }
+.filter.is-active,
 .nav__link.is-active{ color:var(--ink); border-bottom-color:var(--ink); }
-.nav__link .ig{ width:15px; height:15px; flex:0 0 auto; opacity:.85; position:relative; top:-1px; }
+.filter.is-active::after{ content:none; }
+.filters__sep{ display:none; }         /* the reference separates by space, not pipes */
+
+.nav__link--ig{ display:inline-flex; align-items:center; padding:3px 8px; }
+.nav__link .ig{ width:16px; height:16px; flex:0 0 auto; opacity:.85; position:relative; top:5px; }
 
 /* legacy hamburger (unused in this layout) */
 .hamburger{ display:none; }
@@ -75,29 +87,8 @@ button{ font:inherit; color:inherit; letter-spacing:inherit; background:none; bo
   max-width:1560px;
   margin:0 auto;
   min-height:60vh;
-  padding:26px clamp(18px,3.4vw,48px) 90px;
+  padding:0 clamp(18px,3.4vw,48px) 90px;
 }
-
-/* ---------- page head (hidden on gallery — the reference has none) ---------- */
-.page-head{ display:none; }
-
-/* ---------- filters (category bar, styled like the reference nav row) ---------- */
-.filters{
-  display:flex; flex-wrap:wrap; justify-content:center; align-items:baseline;
-  gap:2px 6px; margin:0 auto 34px;
-  max-width:1000px;
-}
-.filter{
-  font-size:13.5px; font-weight:400; letter-spacing:var(--track); text-transform:uppercase;
-  color:var(--soft);
-  padding:3px 11px;
-  border-bottom:1px solid transparent;
-  transition:color .25s var(--ease), border-color .25s var(--ease);
-}
-.filter:hover{ color:var(--ink); }
-.filter.is-active{ color:var(--ink); border-bottom-color:var(--ink); }
-.filter.is-active::after{ content:none; }
-.filters__sep{ display:none; }         /* the reference separates by space, not pipes */
 
 /* ---------- grid (ROW-MAJOR masonry via CSS-grid row spans) ----------
    Columns fill left-to-right (so a row here == a row in the Manage tool).
@@ -135,9 +126,9 @@ button{ font:inherit; color:inherit; letter-spacing:inherit; background:none; bo
   position:absolute; inset:0;
   pointer-events:none;
   background-image:radial-gradient(circle,
-      rgba(255,255,255,.85) 0%,
-      rgba(255,255,255,.82) 52%,
-      rgba(255,255,255,.45) 68%,
+      rgba(255,255,255,.68) 0%,
+      rgba(255,255,255,.66) 52%,
+      rgba(255,255,255,.36) 68%,
       rgba(255,255,255,0) 78%);
   background-repeat:no-repeat;
   background-position:center;
@@ -153,7 +144,9 @@ button{ font:inherit; color:inherit; letter-spacing:inherit; background:none; bo
   transform:translateY(-50%);
   text-align:center; padding:0 16px; line-height:1.45; overflow-wrap:break-word;
   font-size:14px; font-weight:400; letter-spacing:.12em; text-transform:uppercase;
-  color:#1b1b1b; text-shadow:none;
+  /* a faint white halo keeps the black title readable on darker art, now that
+     the haze itself is lighter */
+  color:#1b1b1b; text-shadow:0 0 14px rgba(255,255,255,.85), 0 0 5px rgba(255,255,255,.75);
   opacity:0;
   transition:opacity .45s var(--ease) .12s;   /* surfaces just after the bloom */
 }
@@ -209,12 +202,17 @@ button{ font:inherit; color:inherit; letter-spacing:inherit; background:none; bo
 @media (max-width:1180px){ :root{ --maxcol:3; } }
 @media (max-width:1024px){ :root{ --maxcol:2; } }
 @media (max-width:900px){
-  .topbar{ padding-top:30px; }
+  .topbar{ padding:30px 16px 24px; }
   .sig img{ width:min(190px, 52vw); }
-  .nav{ gap:2px 20px; }
+  .navrow{ margin-top:16px; gap:2px 2px; }
+  .filter, .nav__link{ font-size:13px; padding:3px 8px; }
 }
 @media (max-width:700px){
   :root{ --maxcol:1; }
+  .filter, .nav__link{ font-size:12.5px; padding:3px 7px; }
+  /* narrow screens: the row wraps, so keep About + the Instagram icon together as
+     one unit (a bare icon stranded on its own line reads as a mistake) */
+  .navrow .nav{ display:inline-flex; align-items:baseline; gap:0; }
   .grid{ max-width:520px; margin:0 auto; }
   .detail__meta{ flex-direction:column; align-items:center; row-gap:4px; }
   .detail__sep{ display:none; }
