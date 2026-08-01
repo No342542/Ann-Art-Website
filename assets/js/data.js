@@ -53,7 +53,7 @@ window.ARTWORKS = [
   {"id": "img_1969", "title": "IMG_1969", "date": "2026", "category": "", "image": "assets/img/artwork/img_1969.jpeg", "text": "", "video": null, "w": 2048, "h": 2048},
   {"id": "img_1967", "title": "IMG_1967", "date": "2026", "category": "", "image": "assets/img/artwork/img_1967.jpeg", "text": "", "video": null, "w": 2048, "h": 2048},
   {"id": "img_1965", "title": "IMG_1965", "date": "2026", "category": "", "image": "assets/img/artwork/img_1965.jpeg", "text": "", "video": null, "w": 1668, "h": 2224},
-  {"id": "img_1963", "title": "IMG_1963", "date": "2026", "category": "", "image": "assets/img/artwork/img_1963.jpeg", "text": "", "video": null, "w": 2048, "h": 2048},
+  {"id": "img_1963", "title": "just floating by", "date": "June 2026", "category": "", "image": "assets/img/artwork/img_1963.jpeg", "text": "procreate", "video": null, "w": 2048, "h": 2048},
   {"id": "img_3466", "title": "IMG_3466", "date": "2026", "category": "", "image": "assets/img/artwork/img_3466.jpeg", "text": "", "video": null, "w": 1178, "h": 1188},
   {"id": "img_1970", "title": "IMG_1970", "date": "2026", "category": "", "image": "assets/img/artwork/img_1970.jpeg", "text": "", "video": null, "w": 1920, "h": 2560},
   {"id": "img_3465", "title": "IMG_3465", "date": "2026", "category": "", "image": "assets/img/artwork/img_3465.jpeg", "text": "", "video": null, "w": 1008, "h": 1571},
