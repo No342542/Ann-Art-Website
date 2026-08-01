@@ -32,6 +32,7 @@ window.SITE = {
     ],
     "Nature & places": [
       "img_1965",
+      "img_3506",
       "ann-04",
       "ann-08",
       "ann-12"
@@ -48,16 +49,16 @@ window.SITE = {
 };
 
 window.ARTWORKS = [
-  {"id": "img_1968", "title": "IMG_1968", "date": "2026", "category": "", "image": "assets/img/artwork/img_1968.jpeg", "text": "", "video": null, "w": 2048, "h": 2048},
-  {"id": "img_1964", "title": "IMG_1964", "date": "2026", "category": "", "image": "assets/img/artwork/img_1964.jpeg", "text": "", "video": null, "w": 1668, "h": 2224},
-  {"id": "img_1969", "title": "IMG_1969", "date": "2026", "category": "", "image": "assets/img/artwork/img_1969.jpeg", "text": "", "video": null, "w": 2048, "h": 2048},
-  {"id": "img_1967", "title": "IMG_1967", "date": "2026", "category": "", "image": "assets/img/artwork/img_1967.jpeg", "text": "", "video": null, "w": 2048, "h": 2048},
-  {"id": "img_1965", "title": "The Astoria,  east vancouver ", "date": "May 2026  pencil sketch day 29", "category": "", "image": "assets/img/artwork/img_1965.jpeg", "text": "The Astoria Hotel was built in 1913 as the Toronto House Apartments and became the Astoria Hotel in the 1950s. After renovations, it had its iconic neon sign, beer parlours, air conditioning, heating, a walk in cooler, and a huge parking lot. The once iconic hotel declined over the decades as Hastings Street changed.\n\nIn 1977, the Astoria Boxing Club moved in, helping local youth during a difficult time in the neighbourhood. Like much of the area, it carried a lot of rough stories, including an undercover drug sting in 2005. Today, it remains an SRO, single room occupancy, upstairs, while the Astoria Pub continues below as a music venue and dive bar. There are so many lives and stories behind these walls, many still left untold", "video": null, "w": 1668, "h": 2224},
+  {"id": "img_1968", "title": "emotional produce ", "date": "january 2026 ", "category": "", "image": "assets/img/artwork/img_1968.jpeg", "text": "procreate", "video": null, "w": 2048, "h": 2048},
+  {"id": "img_1964", "title": "stubborn grace", "date": "april 2026 ", "category": "", "image": "assets/img/artwork/img_1964.jpeg", "text": "english bulldog procreate", "video": null, "w": 1668, "h": 2224},
+  {"id": "img_1969", "title": "light my way", "date": "December 2026 ", "category": "", "image": "assets/img/artwork/img_1969.jpeg", "text": "procreate", "video": null, "w": 2048, "h": 2048},
+  {"id": "img_1967", "title": "dumpling time", "date": "march 2026", "category": "", "image": "assets/img/artwork/img_1967.jpeg", "text": "comfort in one bite", "video": null, "w": 2048, "h": 2048},
+  {"id": "img_1965", "title": "The Astoria,  east vancouver ", "date": "May 2026  pencil sketch ", "category": "", "image": "assets/img/artwork/img_1965.jpeg", "text": "The Astoria Hotel was built in 1913 as the Toronto House Apartments and became the Astoria Hotel in the 1950s. After renovations, it had its iconic neon sign, beer parlours, air conditioning, heating, a walk in cooler, and a huge parking lot. The once iconic hotel declined over the decades as Hastings Street changed.\n\nIn 1977, the Astoria Boxing Club moved in, helping local youth during a difficult time in the neighbourhood. Like much of the area, it carried a lot of rough stories, including an undercover drug sting in 2005. Today, it remains an SRO, single room occupancy, upstairs, while the Astoria Pub continues below as a music venue and dive bar. There are so many lives and stories behind these walls, many still left untold", "video": null, "w": 1668, "h": 2224},
   {"id": "img_1963", "title": "just floating by", "date": "June 2026", "category": "", "image": "assets/img/artwork/img_1963.jpeg", "text": "procreate", "video": null, "w": 2048, "h": 2048},
-  {"id": "img_3466", "title": "IMG_3466", "date": "2026", "category": "", "image": "assets/img/artwork/img_3466.jpeg", "text": "", "video": null, "w": 1178, "h": 1188},
-  {"id": "img_1970", "title": "IMG_1970", "date": "2026", "category": "", "image": "assets/img/artwork/img_1970.jpeg", "text": "", "video": null, "w": 1920, "h": 2560},
+  {"id": "img_3466", "title": "black and white spiral", "date": "October 2026", "category": "", "image": "assets/img/artwork/img_3466.jpeg", "text": "ink and pen", "video": null, "w": 1178, "h": 1188},
+  {"id": "img_1970", "title": "rain on me ", "date": "2026", "category": "", "image": "assets/img/artwork/img_1970.jpeg", "text": "pencil sketch", "video": null, "w": 1920, "h": 2560},
   {"id": "img_3465", "title": "feeling loopy", "date": "May 2026", "category": "", "image": "assets/img/artwork/img_3465.jpeg", "text": "ink and pencil", "video": null, "w": 1008, "h": 1571},
-  {"id": "img_3467", "title": "IMG_3467", "date": "2026", "category": "", "image": "assets/img/artwork/img_3467.jpeg", "text": "", "video": null, "w": 1178, "h": 1177},
+  {"id": "img_3467", "title": "sprial", "date": "August 2026", "category": "", "image": "assets/img/artwork/img_3467.jpeg", "text": "ink and pen", "video": null, "w": 1178, "h": 1177},
   {"id": "ann-01", "title": "Tangled Garden", "date": "2025", "category": "Zentangles", "image": "assets/img/artwork/ann-01.svg", "text": "Add a short note about “Tangled Garden” here.", "video": null, "w": 820, "h": 1080},
   {"id": "ann-05", "title": "Spirals", "date": "2024", "category": "Zentangles", "image": "assets/img/artwork/ann-05.svg", "text": "Add a short note about “Spirals” here.", "video": null, "w": 920, "h": 920},
   {"id": "ann-04", "title": "Autumn Hues", "date": "2025", "category": "Nature & places", "image": "assets/img/artwork/ann-04.svg", "text": "Add a short note about “Autumn Hues” here.", "video": null, "w": 1120, "h": 740},
@@ -69,5 +70,6 @@ window.ARTWORKS = [
   {"id": "ann-06", "title": "Dreamscape", "date": "2025", "category": "Characters", "image": "assets/img/artwork/ann-06.svg", "text": "Add a short note about “Dreamscape” here.", "video": null, "w": 820, "h": 1080},
   {"id": "ann-10", "title": "Evening Light", "date": "2025", "category": "Characters", "image": "assets/img/artwork/ann-10.svg", "text": "Add a short note about “Evening Light” here.", "video": null, "w": 1120, "h": 740},
   {"id": "ann-11", "title": "Study of Hands", "date": "2023", "category": "Portraits", "image": "assets/img/artwork/ann-11.svg", "text": "Add a short note about “Study of Hands” here.", "video": null, "w": 820, "h": 1080},
-  {"id": "ann-12", "title": "Botanical", "date": "2025", "category": "Nature & places", "image": "assets/img/artwork/ann-12.svg", "text": "Add a short note about “Botanical” here.", "video": null, "w": 820, "h": 1080}
+  {"id": "ann-12", "title": "Botanical", "date": "2025", "category": "Nature & places", "image": "assets/img/artwork/ann-12.svg", "text": "Add a short note about “Botanical” here.", "video": null, "w": 820, "h": 1080},
+  {"id": "img_3506", "title": "IMG_3506", "date": "2026", "category": "", "image": "assets/img/artwork/img_3506.jpg", "text": "", "video": null, "w": 1043, "h": 1576}
 ];
