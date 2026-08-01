@@ -16,11 +16,6 @@ window.SITE = {
   ],
   "hasVideo": false,
   "collections": {
-    "Zentangles": [
-      "ann-01",
-      "ann-05",
-      "ann-09"
-    ],
     "Characters": [
       "ann-02",
       "ann-06",
@@ -35,11 +30,17 @@ window.SITE = {
       "ann-04",
       "ann-08",
       "ann-12"
+    ],
+    "Zentangles": [
+      "ann-01",
+      "ann-05",
+      "ann-09"
     ]
   }
 };
 
 window.ARTWORKS = [
+  {"id": "6d6bcc07-1fea-45e6-9092-efc93c3ebf61_1_105_c", "title": "6D6BCC07-1FEA-45E6-9092-EFC93C3EBF61_1_105_c", "date": "2026", "category": "", "image": "assets/img/artwork/6d6bcc07-1fea-45e6-9092-efc93c3ebf61_1_105_c.jpeg", "text": "", "video": null, "w": 664, "h": 1182},
   {"id": "ann-01", "title": "Tangled Garden", "date": "2025", "category": "Zentangles", "image": "assets/img/artwork/ann-01.svg", "text": "Add a short note about “Tangled Garden” here.", "video": null, "w": 820, "h": 1080},
   {"id": "ann-04", "title": "Autumn Hues", "date": "2025", "category": "Nature & places", "image": "assets/img/artwork/ann-04.svg", "text": "Add a short note about “Autumn Hues” here.", "video": null, "w": 1120, "h": 740},
   {"id": "ann-05", "title": "Spirals", "date": "2024", "category": "Zentangles", "image": "assets/img/artwork/ann-05.svg", "text": "Add a short note about “Spirals” here.", "video": null, "w": 920, "h": 920},
