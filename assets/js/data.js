@@ -21,6 +21,7 @@ window.SITE = {
       "img_1963",
       "img_1968",
       "img_1969",
+      "img_3514",
       "ann-02",
       "ann-06",
       "ann-10"
@@ -34,6 +35,7 @@ window.SITE = {
     "Nature & places": [
       "img_1965",
       "img_3506",
+      "img_3517",
       "ann-04",
       "ann-08",
       "ann-12"
@@ -42,6 +44,10 @@ window.SITE = {
       "img_3467",
       "img_3465",
       "img_3466",
+      "img_3510",
+      "img_3513",
+      "img_3511",
+      "img_3512",
       "ann-01",
       "ann-05",
       "ann-09"
@@ -72,5 +78,14 @@ window.ARTWORKS = [
   {"id": "ann-06", "title": "Dreamscape", "date": "2025", "category": "Characters", "image": "assets/img/artwork/ann-06.svg", "text": "Add a short note about “Dreamscape” here.", "video": null, "w": 820, "h": 1080},
   {"id": "ann-10", "title": "Evening Light", "date": "2025", "category": "Characters", "image": "assets/img/artwork/ann-10.svg", "text": "Add a short note about “Evening Light” here.", "video": null, "w": 1120, "h": 740},
   {"id": "ann-11", "title": "Study of Hands", "date": "2023", "category": "Portraits", "image": "assets/img/artwork/ann-11.svg", "text": "Add a short note about “Study of Hands” here.", "video": null, "w": 820, "h": 1080},
-  {"id": "ann-12", "title": "Botanical", "date": "2025", "category": "Nature & places", "image": "assets/img/artwork/ann-12.svg", "text": "Add a short note about “Botanical” here.", "video": null, "w": 820, "h": 1080}
+  {"id": "ann-12", "title": "Botanical", "date": "2025", "category": "Nature & places", "image": "assets/img/artwork/ann-12.svg", "text": "Add a short note about “Botanical” here.", "video": null, "w": 820, "h": 1080},
+  {"id": "img_3517", "title": "soar free ", "date": "June 2026", "category": "", "image": "assets/img/artwork/img_3517.jpeg", "text": "creative photography", "video": null, "w": 1178, "h": 1574},
+  {"id": "img_3515", "title": "IMG_3515", "date": "2026", "category": "", "image": "assets/img/artwork/img_3515.jpeg", "text": "", "video": null, "w": 1106, "h": 1569},
+  {"id": "img_3514", "title": "a bit off", "date": "January 2026", "category": "", "image": "assets/img/artwork/img_3514.jpeg", "text": "procreate", "video": null, "w": 1178, "h": 1177},
+  {"id": "img_3513", "title": "amoeba ", "date": "November 2026", "category": "", "image": "assets/img/artwork/img_3513.jpeg", "text": "ink and pencil", "video": null, "w": 1178, "h": 1208},
+  {"id": "img_3512", "title": "pathways - up close and personal ", "date": "November 2026", "category": "", "image": "assets/img/artwork/img_3512.jpeg", "text": "ink and pencil", "video": null, "w": 1178, "h": 1591},
+  {"id": "img_3511", "title": "pathways", "date": "November 2026", "category": "", "image": "assets/img/artwork/img_3511.jpeg", "text": "ink and pencil", "video": null, "w": 1178, "h": 1595},
+  {"id": "img_3510", "title": "round and round we go", "date": "September 2026", "category": "", "image": "assets/img/artwork/img_3510.jpeg", "text": "ink and pencil", "video": null, "w": 1178, "h": 1239},
+  {"id": "img_3509", "title": "IMG_3509", "date": "2026", "category": "", "image": "assets/img/artwork/img_3509.jpeg", "text": "", "video": null, "w": 812, "h": 1309},
+  {"id": "img_3508", "title": "IMG_3508", "date": "2026", "category": "", "image": "assets/img/artwork/img_3508.jpeg", "text": "", "video": null, "w": 1160, "h": 597}
 ];
