@@ -72,7 +72,7 @@ window.ARTWORKS = [
   {"id": "img_3517", "title": "soar free ", "date": "June 2026", "category": "", "image": "assets/img/artwork/img_3517.jpeg", "text": "creative photography", "video": null, "w": 1178, "h": 1574},
   {"id": "img_3514", "title": "a bit off", "date": "January 2026", "category": "", "image": "assets/img/artwork/img_3514.jpeg", "text": "procreate", "video": null, "w": 1178, "h": 1177},
   {"id": "img_3513", "title": "amoeba ", "date": "November 2026", "category": "", "image": "assets/img/artwork/img_3513.jpeg", "text": "ink and pencil", "video": null, "w": 1178, "h": 1208},
-  {"id": "img_3510", "title": "round and round we go", "date": "September 2026", "category": "", "image": "assets/img/artwork/img_3510.jpeg", "text": "ink and pencil", "video": null, "w": 1178, "h": 1239},
+  {"id": "img_3510", "title": "round and round ", "date": "September 2026", "category": "", "image": "assets/img/artwork/img_3510.jpeg", "text": "ink and pencil", "video": null, "w": 1178, "h": 1239},
   {"id": "img_3511", "title": "pathways", "date": "November 2026", "category": "", "image": "assets/img/artwork/img_3511.jpeg", "text": "ink and pencil", "video": null, "w": 1178, "h": 1595},
   {"id": "img_3512", "title": "pathways - up close and personal ", "date": "November 2026", "category": "", "image": "assets/img/artwork/img_3512.jpeg", "text": "ink and pencil", "video": null, "w": 1178, "h": 1591},
   {"id": "img_3515", "title": "IMG_3515", "date": "2026", "category": "", "image": "assets/img/artwork/img_3515.jpeg", "text": "", "video": null, "w": 1106, "h": 1569},
