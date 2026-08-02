@@ -36,6 +36,7 @@ window.SITE = {
       "img_1965",
       "img_3506",
       "img_3517",
+      "img_3515",
       "ann-04",
       "ann-08",
       "ann-12"
@@ -75,7 +76,7 @@ window.ARTWORKS = [
   {"id": "img_3510", "title": "round and round ", "date": "September 2026", "category": "", "image": "assets/img/artwork/img_3510.jpeg", "text": "ink and pencil", "video": null, "w": 1178, "h": 1239},
   {"id": "img_3511", "title": "pathways", "date": "November 2026", "category": "", "image": "assets/img/artwork/img_3511.jpeg", "text": "ink and pencil", "video": null, "w": 1178, "h": 1595},
   {"id": "img_3512", "title": "pathways - up close and personal ", "date": "November 2026", "category": "", "image": "assets/img/artwork/img_3512.jpeg", "text": "ink and pencil", "video": null, "w": 1178, "h": 1591},
-  {"id": "img_3515", "title": "IMG_3515", "date": "2026", "category": "", "image": "assets/img/artwork/img_3515.jpeg", "text": "", "video": null, "w": 1106, "h": 1569},
+  {"id": "img_3515", "title": "matchstick", "date": "May 2026", "category": "", "image": "assets/img/artwork/img_3515.jpeg", "text": "water soluble color pencil", "video": null, "w": 1106, "h": 1569},
   {"id": "ann-01", "title": "Tangled Garden", "date": "2025", "category": "Zentangles", "image": "assets/img/artwork/ann-01.svg", "text": "Add a short note about “Tangled Garden” here.", "video": null, "w": 820, "h": 1080},
   {"id": "ann-05", "title": "Spirals", "date": "2024", "category": "Zentangles", "image": "assets/img/artwork/ann-05.svg", "text": "Add a short note about “Spirals” here.", "video": null, "w": 920, "h": 920},
   {"id": "ann-04", "title": "Autumn Hues", "date": "2025", "category": "Nature & places", "image": "assets/img/artwork/ann-04.svg", "text": "Add a short note about “Autumn Hues” here.", "video": null, "w": 1120, "h": 740},
