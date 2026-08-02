@@ -77,6 +77,8 @@ window.ARTWORKS = [
   {"id": "img_3511", "title": "pathways", "date": "November 2026", "category": "", "image": "assets/img/artwork/img_3511.jpeg", "text": "ink and pencil", "video": null, "w": 1178, "h": 1595},
   {"id": "img_3512", "title": "pathways - up close and personal ", "date": "November 2026", "category": "", "image": "assets/img/artwork/img_3512.jpeg", "text": "ink and pencil", "video": null, "w": 1178, "h": 1591},
   {"id": "img_3515", "title": "matchstick", "date": "May 2026", "category": "", "image": "assets/img/artwork/img_3515.jpeg", "text": "water soluble color pencil", "video": null, "w": 1106, "h": 1569},
+  {"id": "img_3509", "title": "silent movements ", "date": "September 2026", "category": "", "image": "assets/img/artwork/img_3509.jpeg", "text": "ink and pencil", "video": null, "w": 812, "h": 1309},
+  {"id": "img_3508", "title": "squiggles - tangle lines and tangled thoughts ", "date": "August 2026", "category": "", "image": "assets/img/artwork/img_3508.jpeg", "text": "ink and pencil", "video": null, "w": 1160, "h": 597},
   {"id": "ann-01", "title": "Tangled Garden", "date": "2025", "category": "Zentangles", "image": "assets/img/artwork/ann-01.svg", "text": "Add a short note about “Tangled Garden” here.", "video": null, "w": 820, "h": 1080},
   {"id": "ann-05", "title": "Spirals", "date": "2024", "category": "Zentangles", "image": "assets/img/artwork/ann-05.svg", "text": "Add a short note about “Spirals” here.", "video": null, "w": 920, "h": 920},
   {"id": "ann-04", "title": "Autumn Hues", "date": "2025", "category": "Nature & places", "image": "assets/img/artwork/ann-04.svg", "text": "Add a short note about “Autumn Hues” here.", "video": null, "w": 1120, "h": 740},
@@ -88,7 +90,5 @@ window.ARTWORKS = [
   {"id": "ann-06", "title": "Dreamscape", "date": "2025", "category": "Characters", "image": "assets/img/artwork/ann-06.svg", "text": "Add a short note about “Dreamscape” here.", "video": null, "w": 820, "h": 1080},
   {"id": "ann-10", "title": "Evening Light", "date": "2025", "category": "Characters", "image": "assets/img/artwork/ann-10.svg", "text": "Add a short note about “Evening Light” here.", "video": null, "w": 1120, "h": 740},
   {"id": "ann-11", "title": "Study of Hands", "date": "2023", "category": "Portraits", "image": "assets/img/artwork/ann-11.svg", "text": "Add a short note about “Study of Hands” here.", "video": null, "w": 820, "h": 1080},
-  {"id": "ann-12", "title": "Botanical", "date": "2025", "category": "Nature & places", "image": "assets/img/artwork/ann-12.svg", "text": "Add a short note about “Botanical” here.", "video": null, "w": 820, "h": 1080},
-  {"id": "img_3509", "title": "silent movements ", "date": "September 2026", "category": "", "image": "assets/img/artwork/img_3509.jpeg", "text": "ink and pencil", "video": null, "w": 812, "h": 1309},
-  {"id": "img_3508", "title": "squiggles - tangle lines and tangled thoughts ", "date": "August 2026", "category": "", "image": "assets/img/artwork/img_3508.jpeg", "text": "ink and pencil", "video": null, "w": 1160, "h": 597}
+  {"id": "ann-12", "title": "Botanical", "date": "2025", "category": "Nature & places", "image": "assets/img/artwork/ann-12.svg", "text": "Add a short note about “Botanical” here.", "video": null, "w": 820, "h": 1080}
 ];
