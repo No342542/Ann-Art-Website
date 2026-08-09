@@ -6,7 +6,7 @@ window.SITE = {
   "name": "Ann",
   "galleryTitle": "Gallery",
   "instagram": "https://www.instagram.com/lil_annw?utm_source=qr",
-  "about": "Ann is an artist drawing characters, portraits, nature and places, and zentangles. This is placeholder text — replace it with Ann's own words.",
+  "about": "A wandering soul, looking for the next adventure. Enjoying the great outdoors, finding new restaurants and recipes, mostly importantly being able to share it with my family and friends who I am so grateful for.",
   "categories": [
     "All",
     "Characters",
