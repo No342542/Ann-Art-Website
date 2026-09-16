@@ -110,5 +110,6 @@ window.ARTWORKS = [
   {"id": "ann-06", "title": "Dreamscape", "date": "2025", "category": "Characters", "image": "assets/img/artwork/ann-06.svg", "text": "Add a short note about “Dreamscape” here.", "video": null, "w": 820, "h": 1080},
   {"id": "ann-10", "title": "Evening Light", "date": "2025", "category": "Characters", "image": "assets/img/artwork/ann-10.svg", "text": "Add a short note about “Evening Light” here.", "video": null, "w": 1120, "h": 740},
   {"id": "ann-11", "title": "Study of Hands", "date": "2023", "category": "Portraits", "image": "assets/img/artwork/ann-11.svg", "text": "Add a short note about “Study of Hands” here.", "video": null, "w": 820, "h": 1080},
-  {"id": "ann-12", "title": "Botanical", "date": "2025", "category": "Nature & places", "image": "assets/img/artwork/ann-12.svg", "text": "Add a short note about “Botanical” here.", "video": null, "w": 820, "h": 1080}
+  {"id": "ann-12", "title": "Botanical", "date": "2025", "category": "Nature & places", "image": "assets/img/artwork/ann-12.svg", "text": "Add a short note about “Botanical” here.", "video": null, "w": 820, "h": 1080},
+  {"id": "img_3955", "title": "watching people make questionable chocies", "date": "September 2026", "category": "", "image": "assets/img/artwork/img_3955.jpg", "text": "polymer clay", "video": null, "w": 1440, "h": 2560}
 ];
