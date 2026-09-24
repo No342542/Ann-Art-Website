@@ -29,6 +29,8 @@ window.SITE = {
       "13cab9f7-b1a8-458a-97e9-c4c5dfc39e27_1_201_a",
       "9d6d090e-40ab-4eea-adee-9a36b385c7e2_1_201_a",
       "34a1203e-7e43-4857-8e26-f6b0b68c4e00_1_201_a",
+      "img_4034_snapseedcopy",
+      "img_4091",
       "ann-02",
       "ann-06",
       "ann-10"
